@@ -1,4 +1,4 @@
-package com.betrybe.agrix.farm.controller;
+package com.betrybe.agrix.farm.exception;
 
 /**
  * CropNotFound - Classe de erro customizada para Crop.

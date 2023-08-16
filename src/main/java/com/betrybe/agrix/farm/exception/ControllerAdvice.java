@@ -1,5 +1,7 @@
-package com.betrybe.agrix.farm.controller;
+package com.betrybe.agrix.farm.exception;
 
+import com.betrybe.agrix.farm.exception.CropNotFound;
+import com.betrybe.agrix.farm.exception.FarmNotFound;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

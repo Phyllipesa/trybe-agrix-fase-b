@@ -1,6 +1,6 @@
 package com.betrybe.agrix.farm.service;
 
-import com.betrybe.agrix.farm.controller.CropNotFound;
+import com.betrybe.agrix.farm.exception.CropNotFound;
 import com.betrybe.agrix.farm.model.entities.Crop;
 import com.betrybe.agrix.farm.model.repositories.CropRepository;
 import java.util.List;

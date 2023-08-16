@@ -1,6 +1,6 @@
 package com.betrybe.agrix.farm.service;
 
-import com.betrybe.agrix.farm.controller.FarmNotFound;
+import com.betrybe.agrix.farm.exception.FarmNotFound;
 import com.betrybe.agrix.farm.model.entities.Crop;
 import com.betrybe.agrix.farm.model.entities.Farm;
 import com.betrybe.agrix.farm.model.repositories.CropRepository;

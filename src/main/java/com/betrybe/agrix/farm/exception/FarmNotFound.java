@@ -1,4 +1,4 @@
-package com.betrybe.agrix.farm.controller;
+package com.betrybe.agrix.farm.exception;
 
 /**
  * FarmNotFound - Classe de erro customizada para Farm.
