@@ -2,8 +2,8 @@ package com.betrybe.agrix.farm.controller;
 
 import com.betrybe.agrix.farm.controller.dto.CropDto;
 import com.betrybe.agrix.farm.controller.dto.FarmDto;
-import com.betrybe.agrix.farm.model.entities.Crop;
-import com.betrybe.agrix.farm.model.entities.Farm;
+import com.betrybe.agrix.farm.model.entity.Crop;
+import com.betrybe.agrix.farm.model.entity.Farm;
 import com.betrybe.agrix.farm.service.FarmService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

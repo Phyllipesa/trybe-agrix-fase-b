@@ -1,6 +1,6 @@
 package com.betrybe.agrix.farm.controller.dto;
 
-import com.betrybe.agrix.farm.model.entities.Farm;
+import com.betrybe.agrix.farm.model.entity.Farm;
 
 /**
  * Create the Farm dto.

@@ -1,6 +1,6 @@
-package com.betrybe.agrix.farm.model.repositories;
+package com.betrybe.agrix.farm.model.repository;
 
-import com.betrybe.agrix.farm.model.entities.Crop;
+import com.betrybe.agrix.farm.model.entity.Crop;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

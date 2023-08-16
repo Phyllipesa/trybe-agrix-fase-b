@@ -1,7 +1,7 @@
 package com.betrybe.agrix.farm.controller;
 
 import com.betrybe.agrix.farm.controller.dto.CropDto;
-import com.betrybe.agrix.farm.model.entities.Crop;
+import com.betrybe.agrix.farm.model.entity.Crop;
 import com.betrybe.agrix.farm.service.CropService;
 import java.util.List;
 import org.springframework.http.ResponseEntity;

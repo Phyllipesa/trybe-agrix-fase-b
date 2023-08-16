@@ -1,8 +1,8 @@
 package com.betrybe.agrix.farm.service;
 
 import com.betrybe.agrix.farm.exception.CropNotFound;
-import com.betrybe.agrix.farm.model.entities.Crop;
-import com.betrybe.agrix.farm.model.repositories.CropRepository;
+import com.betrybe.agrix.farm.model.entity.Crop;
+import com.betrybe.agrix.farm.model.repository.CropRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

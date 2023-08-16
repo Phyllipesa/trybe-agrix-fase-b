@@ -1,4 +1,4 @@
-package com.betrybe.agrix.farm.model.entities;
+package com.betrybe.agrix.farm.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
@@ -77,3 +77,4 @@ public class Farm {
     this.crops = crops;
   }
 }
+

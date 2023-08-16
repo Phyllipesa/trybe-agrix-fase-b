@@ -1,4 +1,4 @@
-package com.betrybe.agrix.farm.model.entities;
+package com.betrybe.agrix.farm.model.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
