@@ -3,7 +3,7 @@ package com.betrybe.agrix.farm.controller.dto;
 import com.betrybe.agrix.farm.model.entity.Farm;
 
 /**
- * Create the Farm dto.
+ * Cria um Farm dto.
  *
  * @param id farm id
  * @param name farm name
@@ -12,7 +12,7 @@ import com.betrybe.agrix.farm.model.entity.Farm;
 public record FarmDto(Long id, String name, Double size) {
 
   /**
-   * Create the Farm dto.
+   * Metodo para criação do DTO.
    *
    * @param farm from entity.
    */
