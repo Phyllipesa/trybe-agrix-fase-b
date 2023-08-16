@@ -3,6 +3,7 @@ package com.betrybe.agrix.farm.service;
 import com.betrybe.agrix.farm.exception.CropNotFound;
 import com.betrybe.agrix.farm.model.entity.Crop;
 import com.betrybe.agrix.farm.model.repository.CropRepository;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,21 @@ public class CropService {
     }
 
     return optionalCrop.get();
+  }
+
+  /**
+   * cropsByHarvestDate busca por todas as Crops em que estejam
+   * entre o periodo de plantação START e END.
+   *  OBS: Lista deve incluir datas que sejam iguais à de início ou à de fim.
+   *
+   * @param start data de inicio da busca.
+   * @param end data de termino da busca.
+   * @return Lista de crops com as datas especificadas.
+   */
+  public List<Crop> cropsByHarvestDate(
+      LocalDate start,
+      LocalDate end
+  ) {
+    return cropRepository.findByHarvestDate(start, end);
   }
 }
