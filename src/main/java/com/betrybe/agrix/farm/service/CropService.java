@@ -1,8 +1,11 @@
 package com.betrybe.agrix.farm.service;
 
 import com.betrybe.agrix.farm.exception.CropNotFound;
+import com.betrybe.agrix.farm.exception.FertilizerNotFound;
 import com.betrybe.agrix.farm.model.entity.Crop;
+import com.betrybe.agrix.farm.model.entity.Fertilizer;
 import com.betrybe.agrix.farm.model.repository.CropRepository;
+import com.betrybe.agrix.farm.model.repository.FertilizerRepository;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -18,15 +21,16 @@ public class CropService {
 
   @Autowired
   private final CropRepository cropRepository;
+  private final FertilizerRepository fertilizerRepository;
 
   /**
    * Constructor = faz a injeção de dependencia na services especificadas.
    *
    * @param cropRepository farm repository
    */
-
-  public CropService(CropRepository cropRepository) {
+  public CropService(CropRepository cropRepository, FertilizerRepository fertilizerRepository) {
     this.cropRepository = cropRepository;
+    this.fertilizerRepository = fertilizerRepository;
   }
 
   /**
@@ -68,5 +72,31 @@ public class CropService {
       LocalDate end
   ) {
     return cropRepository.findByHarvestDate(start, end);
+  }
+
+  /**
+   * cropAndFertilizerAssociation associação entre
+   * as tabelas Crop e Fertilizer no DB.
+   *
+   * @param cropId ID da crop.
+   * @param fertilizerId ID da fertilizante.
+   */
+  public void cropAndFertilizerAssociation(Long cropId, Long fertilizerId) {
+    Optional<Crop> optionalCrop = cropRepository.findById(cropId);
+    Optional<Fertilizer> optionalFertilizer = fertilizerRepository.findById(fertilizerId);
+
+    if (optionalCrop.isEmpty()) {
+      throw new CropNotFound();
+    }
+
+    if (optionalFertilizer.isEmpty()) {
+      throw new FertilizerNotFound();
+    }
+
+    Crop crop = optionalCrop.get();
+    Fertilizer fertilizer = optionalFertilizer.get();
+
+    crop.getFertilizers().add(fertilizer);
+    cropRepository.save(crop);
   }
 }

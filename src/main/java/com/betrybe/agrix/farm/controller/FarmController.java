@@ -77,7 +77,7 @@ public class FarmController {
   }
 
   /**
-   * insertFarm insere uma nova farm no DB.
+   * createCrop insere uma nova crop no DB.
    *
    * @param farmId ID da farm a ser procurada.
    * @param crop informações a serem inseridas.

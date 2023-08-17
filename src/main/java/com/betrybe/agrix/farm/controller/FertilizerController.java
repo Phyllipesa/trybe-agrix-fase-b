@@ -8,7 +8,6 @@ import com.betrybe.agrix.farm.model.entity.Fertilizer;
 import com.betrybe.agrix.farm.service.FertilizerService;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +26,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class FertilizerController {
 
   private final FertilizerService fertilizerService;
+
+  /**
+   * Recebe um bean do tipo FertilizerService por injeção de dependência.
+   *
+   * @param fertilizerService service.
+   */
 
   public FertilizerController(FertilizerService fertilizerService) {
     this.fertilizerService = fertilizerService;
@@ -72,23 +77,4 @@ public class FertilizerController {
     return ResponseEntity.ok(fertilizerDto);
   }
 
-  /**
-   * insertFarm insere uma nova farm no DB.
-   *
-   * @param farmId ID da farm a ser procurada.
-   * @param crop informações a serem inseridas.
-   * @return retorna os dados da crop inserida.
-   */
-  public Crop insertCrop(Long farmId, Crop crop) {
-    Optional<Farm> optionalFarm = farmRepository.findById(farmId);
-
-    if (optionalFarm.isEmpty()) {
-      throw new FarmNotFound();
-    }
-
-    crop.setFarm(optionalFarm.get());
-    Crop newCrop = cropRepository.save(crop);
-
-    return newCrop;
-  }
 }
