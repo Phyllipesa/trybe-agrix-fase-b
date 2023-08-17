@@ -1,7 +1,10 @@
 package com.betrybe.agrix.farm.controller;
 
 import com.betrybe.agrix.farm.controller.dto.CropDto;
+import com.betrybe.agrix.farm.controller.dto.FertilizerDto;
 import com.betrybe.agrix.farm.model.entity.Crop;
+import com.betrybe.agrix.farm.model.entity.Farm;
+import com.betrybe.agrix.farm.model.entity.Fertilizer;
 import com.betrybe.agrix.farm.service.CropService;
 import java.time.LocalDate;
 import java.util.List;
@@ -97,5 +100,24 @@ public class CropController {
     cropService.cropAndFertilizerAssociation(cropId, fertilizerId);
     return ResponseEntity.status(HttpStatus.CREATED)
             .body(String.format("Fertilizante e plantação associados com sucesso!"));
+  }
+
+  /**
+   * getFertilizerByCropId = Lista todas fertilizantes
+   * registrados no DB referentes a "cropId" informada.
+   *
+   * @param cropId = ID da crop informada.
+   * @return HTTP status.OK 200 e a lista das fertilizerDto.
+   */
+  @GetMapping("/{cropId}/fertilizers")
+  public ResponseEntity<List<FertilizerDto>> getFertilizerByCropId(@PathVariable Long cropId) {
+    Crop crop = cropService.getCropById(cropId);
+
+    List<Fertilizer> allfertilizers = crop.getFertilizers();
+    List<FertilizerDto> fertilizerDtos = allfertilizers.stream()
+            .map(FertilizerDto::fertilizerEntityToDto)
+            .toList();
+
+    return ResponseEntity.ok(fertilizerDtos);
   }
 }
