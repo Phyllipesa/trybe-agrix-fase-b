@@ -16,6 +16,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 
 @SpringBootTest
 public class PersonServiceTest {
@@ -67,10 +68,10 @@ public class PersonServiceTest {
         .thenReturn(Optional.empty());
 
     // (2) Validamos que uma exceção é lançada
-    assertThrows(PersonNotFoundException.class, () -> personService.getPersonById(2L));
+    assertThrows(PersonNotFoundException.class, () -> personService.getPersonById(eq(2L)));
 
     // (3) Verificamos se a camada de persistência foi chamada
-    Mockito.verify(personRepository).findById(2L);
+    Mockito.verify(personRepository).findById(eq(2L));
   }
 
   @Test
@@ -79,14 +80,14 @@ public class PersonServiceTest {
     Person person = createPerson();
 
     // (3) Mockamos o retorno do repository
-    Mockito.when(personRepository.findById(any(Long.class)))
+    Mockito.when(personRepository.findById(eq(1L)))
         .thenReturn(Optional.of(person));
 
     // Chamamos a camada de serviço
-    Person personId = personService.getPersonById(person.getId());
+    Person personId = personService.getPersonById(1L);
 
     // (4) Verificamos se a camada de persistência foi chamada
-    Mockito.verify(personRepository).findById(person.getId());
+    Mockito.verify(personRepository).findById(eq(1l));
 
     // Validamos os atributos do objeto retornado
     assertEquals(1L, personId.getId());
@@ -107,5 +108,27 @@ public class PersonServiceTest {
 
     // (3) Verificamos se a camada de persistência foi chamada
     Mockito.verify(personRepository).findByUsername("Tulio Maravilha");
+  }
+
+  @Test
+  public void testGetPersonByUsername() {
+    // (2) Criamos um novo produto para retornar
+    Person person = createPerson();
+
+    // (3) Mockamos o retorno do repository
+    Mockito.when(personRepository.findByUsername(any(String.class)))
+        .thenReturn(Optional.of(person));
+
+    // Chamamos a camada de serviço
+    Person result = personService.getPersonByUsername(person.getUsername());
+
+    // (4) Verificamos se a camada de persistência foi chamada
+    Mockito.verify(personRepository).findByUsername(person.getUsername());
+
+    // Validamos os atributos do objeto retornado
+    assertEquals(1L, result.getId());
+    assertEquals(person.getUsername(), result.getUsername());
+    assertEquals(person.getPassword(), result.getPassword());
+    assertEquals(person.getRole(), result.getRole());
   }
 }
