@@ -1,4 +1,4 @@
-# Agrix fase A
+# Agrix fase B
 
 A Fase A do projeto foi um sucesso! Sua equipe agora ficou responsável por expandir a aplicação e incluir algumas funcionalidades extra. Inclusive, vocês receberam uma base de código pronta que conseguiram adquirir de outra empresa, e que precisará ser testado.
 
