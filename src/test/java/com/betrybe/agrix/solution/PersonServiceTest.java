@@ -68,10 +68,10 @@ public class PersonServiceTest {
         .thenReturn(Optional.empty());
 
     // (2) Validamos que uma exceção é lançada
-    assertThrows(PersonNotFoundException.class, () -> personService.getPersonById(eq(2L)));
+    assertThrows(PersonNotFoundException.class, () -> personService.getPersonById(2L));
 
     // (3) Verificamos se a camada de persistência foi chamada
-    Mockito.verify(personRepository).findById(eq(2L));
+    Mockito.verify(personRepository).findById(2L);
   }
 
   @Test
@@ -80,14 +80,14 @@ public class PersonServiceTest {
     Person person = createPerson();
 
     // (3) Mockamos o retorno do repository
-    Mockito.when(personRepository.findById(eq(1L)))
+    Mockito.when(personRepository.findById(1L))
         .thenReturn(Optional.of(person));
 
     // Chamamos a camada de serviço
     Person personId = personService.getPersonById(1L);
 
     // (4) Verificamos se a camada de persistência foi chamada
-    Mockito.verify(personRepository).findById(eq(1l));
+    Mockito.verify(personRepository).findById(1l);
 
     // Validamos os atributos do objeto retornado
     assertEquals(1L, personId.getId());
